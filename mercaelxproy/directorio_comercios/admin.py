@@ -2,18 +2,20 @@ from django.contrib import admin
 
 # Register your models here.
 from .models import Asociacion, Categoria, Subcategoria, Comercio
+from core.models import Ciudad
 
 #--------UD6.3.a-DU6.3.c--------
 #Registro los modelos en la administración de Django(Asociacion)
 
 class AsociacionAdmin(admin.ModelAdmin):# Defino la clase AsociacionAdmin para personalizar la administración del modelo de Asociacion
-    list_display = ('codigo_ciudad', 'nombre')  # Mostrar codigo_ciudad y nombre en la vista de lista
+    # Mostrar codigo_ciudad y nombre en la vista de lista
+    list_display = ('codigo_ciudad', 'nombre')
     list_display_links = ('codigo_ciudad', 'nombre')  # Hacer estos campos clicables
     search_fields = ('nombre', 'ciudad__nombre', 'direccion')  # Buscar por nombre, ciudad__nombre y direccion
 
     def codigo_ciudad(self, obj):  # Método para mostrar el codigo de la ciudad
         return obj.ciudad.codigo
-    codigo_ciudad.short_description = 'Código Ciudad'
+
 
 admin.site.register(Asociacion, AsociacionAdmin) # Registro de Asociacion con la clase AsociacionAdmin
 
@@ -37,7 +39,8 @@ class SubcategoriaAdmin(admin.ModelAdmin):
 
     def codigo_categoria(self, obj):
         return obj.categoria.codigo
-    codigo_categoria.short_description = 'Código Categoria'
+    
+
 
 admin.site.register(Subcategoria, SubcategoriaAdmin)
 
@@ -57,14 +60,14 @@ class ComercioAdmin(admin.ModelAdmin):
 
     def codigo_ciudad(self, obj):
         return obj.ciudad.codigo
-    codigo_ciudad.short_description = 'Código Ciudad'
+    
 
     def codigo_categoria(self, obj):
         return obj.categoria.codigo
-    codigo_categoria.short_description = 'Código Categoria'
+    
 
     def codigo_subcategoria(self, obj):
         return obj.subcategoria.codigo if obj.subcategoria else 'N/A'
-    codigo_subcategoria.short_description = 'Código Subcategoria'
+    
 
 admin.site.register(Comercio, ComercioAdmin)

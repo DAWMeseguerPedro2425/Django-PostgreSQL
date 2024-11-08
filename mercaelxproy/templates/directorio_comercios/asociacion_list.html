@@ -1,0 +1,14 @@
+{% extends "common/base_intranet.html" %}
+
+{% block main_content %}
+<div class="container">
+    <h1>Lista de Asociaciones.</h1>
+    <ul class="list-group mt-3">
+    {% for asociacion in object_list %}
+        <a href="{% url 'asociacion_detail' pk=asociacion.id %}" class="list-group-item list-group-item-action">{{ asociacion }}</a>
+    {% empty %}
+        <p>No existen asociaciones.</p>
+    {% endfor %}
+    </ul>
+</div>
+{% endblock main_content %}

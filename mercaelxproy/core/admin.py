@@ -24,8 +24,7 @@ class CiudadAdmin(admin.ModelAdmin):
 
     def codigo_provincia(self, obj): # Método para mostrar el código de la provincia
         return obj.provincia.codigo
-    codigo_provincia.short_description = 'Código Provincia'
-
+    
 admin.site.register(Ciudad, CiudadAdmin)
 
 #--------UD6.4.b--------
@@ -39,6 +38,5 @@ class DistritoAdmin(admin.ModelAdmin):
 
     def codigo_ciudad(self, obj):
         return obj.ciudad.codigo
-    codigo_ciudad.short_description = 'Código Ciudad'
 
 admin.site.register(Distrito, DistritoAdmin)

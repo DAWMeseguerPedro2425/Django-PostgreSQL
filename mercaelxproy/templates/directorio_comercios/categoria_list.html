@@ -1,0 +1,14 @@
+{% extends "common/base_intranet.html" %}
+
+{% block main_content %}
+<div class="container">
+    <h1>Lista de Categorias</h1>
+    <ul class="list-group mt-3">
+    {% for categoria in object_list %}
+        <a href="{% url 'categoria_detail' pk=categoria.id %}" class="list-group-item list-group-item-action">{{ categoria }}</a>
+    {% empty %}
+        <p>No existen categorías.</p>
+    {% endfor %}
+    </ul>
+</div>
+{% endblock main_content %}
