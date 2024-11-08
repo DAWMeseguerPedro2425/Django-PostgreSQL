@@ -1,0 +1,14 @@
+{% extends "common/base_intranet.html" %}
+
+{% block main_content %}
+<div class="container">
+    <h1>Lista de {{ object.verbose_name_plural }}</h1>
+    <ul class="list-group mt-3">
+    {% for provincia in object_list %}
+        <a href="{% url 'provincia_detail' pk=provincia.id %}" class="list-group-item list-group-item-action">{{ provincia }}</a>
+    {% empty %}
+        <p>No existen provincias.</p>
+    {% endfor %}
+    </ul>
+</div>
+{% endblock main_content %}

@@ -1,0 +1,12 @@
+#------UD6.2.h------
+#Configuracion de Docker Compose para el proyecto Mercaelx
+version: '3'
+
+services:
+  web:
+    build: .  # Construye la imagen usando el Dockerfile en la raíz
+    command: python manage.py runserver 0.0.0.0:8000  # Comando para iniciar el servidor de Django
+    ports:
+      - "80:8000"
+    volumes:
+      - ./mercaelxproy/:/code # Mapeo de volumen para sincronizar cambios en el código

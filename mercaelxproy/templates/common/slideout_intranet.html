@@ -1,0 +1,47 @@
+    <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block sidebar collapse">
+      <div class="position-sticky pt-3">
+        <a href="{% url 'panel' %}" class="nav-link" aria-current="page">
+          <span class="text-secondary fs-4">Panel</span>
+        </a>
+        <hr>
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <a href="{% url 'provincia_list' %}" class="nav-link" aria-current="page">
+              <span class="text-secondary">Provincias</span>
+            </a>
+          </li>
+          <li>
+            <a href="{% url 'ciudad_list' %}" class="nav-link">
+              <span class="text-secondary">Ciudades</span>
+            </a>
+          </li>
+          <li>
+            <a href="{% url 'distrito_list' %}" class="nav-link">
+              <span class="text-secondary">Distritos</span>
+            </a>
+          </li>
+          <hr>
+          <li>
+            <a href="#" class="nav-link">
+              <span class="text-secondary">Asociaciones</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="nav-link">
+              <span class="text-secondary">Comercios</span>
+            </a>
+          </li>
+            <a href="#" class="nav-link">
+              <span class="text-secondary">Categorías</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="nav-link">
+              <span class="text-secondary">Subcategorías</span>
+            </a>
+          </li>
+          <hr>
+
+        </ul>
+      </div>
+    </nav>

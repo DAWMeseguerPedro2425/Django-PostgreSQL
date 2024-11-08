@@ -1,0 +1,11 @@
+{% extends "common/base_intranet.html" %}
+
+
+{% block main_content %}
+<h1>Detalle de distrito</h1>
+
+<p>
+    {{object.ciudad.codigo}} - {{object.nombre|safe}}
+</p>
+
+{% endblock main_content %}
