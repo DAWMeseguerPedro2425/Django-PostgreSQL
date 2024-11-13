@@ -1,8 +1,12 @@
+<!--
+------UD6.8.a------
+Template de lista de comercios
+-->
 {% extends "common/base_intranet.html" %}
 
 {% block main_content %}
 <div class="container">
-    <h1>Lista de Comercios</h1>
+    <h1>Lista de comercios</h1>
     <ul class="list-group mt-3">
     {% for comercio in object_list %}
         <a href="{% url 'comercio_detail' pk=comercio.id %}" class="list-group-item list-group-item-action">{{ comercio }}</a>

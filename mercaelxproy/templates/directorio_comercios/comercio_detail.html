@@ -1,6 +1,18 @@
+<!--
+------UD6.8.a------
+Template de detalle de comercio
+-->
 {% extends "common/base_intranet.html" %}
 
 {% block main_content %}
 <h1>Detalle de comercio</h1>
-<h6>{{ object.nombre }}</h6>
+<p><strong>Nombre:</strong> {{ object.nombre }}</p>
+<p><strong>Código Postal:</strong> {{ object.codigo_postal }}</p>
+<p><strong>Dirección:</strong> {{ object.direccion }}</p>
+<p><strong>Ciudad:</strong> {{ object.ciudad }}</p>
+<p><strong>Categoría:</strong> {{ object.categoria }}</p>
+<p><strong>Subcategoría:</strong> {{ object.subcategoria }}</p>
+<p><strong>Asociación:</strong> {{ object.asociacion }}</p>
+<p><strong>Correo electrónico:</strong> {{ object.correo_electronico }}</p>
+<p><strong>Teléfono:</strong> {{ object.telefono }}</p>
 {% endblock main_content %}

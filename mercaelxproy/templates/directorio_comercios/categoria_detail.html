@@ -1,6 +1,12 @@
+<!--
+------UD6.8.a------
+Template de detalle de categoría
+-->
 {% extends "common/base_intranet.html" %}
 
 {% block main_content %}
-<h1>Detalle de categoría</h1>
-<h6>{{ object.nombre }}</h6>
+<h1>Detalle de la categoría</h1>
+<p><strong>Código:</strong> {{ object.codigo }}</p>
+<p><strong>Nombre:</strong> {{ object.nombre }}</p>
+
 {% endblock main_content %}

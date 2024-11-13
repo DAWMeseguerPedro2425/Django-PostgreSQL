@@ -5,7 +5,7 @@ from django.db import models
 #Se crea el modelo Provincia con los campos codigo y nombre
 class Provincia(models.Model):
     codigo = models.CharField(max_length=10, unique=True)
-    nombre = models.CharField(max_length=256, unique=True)
+    nombre = models.CharField(max_length=255, unique=True)
     #--------UD6.3.b--------
     #El método __str__ devuelve una cadena con el código y el nombre de la provincia
     def __str__(self):
@@ -16,6 +16,7 @@ class Provincia(models.Model):
         verbose_name = 'Provincia' # Nombre en singular
         verbose_name_plural = 'Provincias' # Nombre en plural
         ordering = ['nombre'] # Ordenar por nombre
+        
 
 
 

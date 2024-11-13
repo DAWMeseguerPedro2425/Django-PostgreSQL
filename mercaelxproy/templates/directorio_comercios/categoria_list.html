@@ -1,3 +1,8 @@
+<!--
+------UD6.8.a------
+Template de lista de categorías
+-->
+
 {% extends "common/base_intranet.html" %}
 
 {% block main_content %}
@@ -5,7 +10,7 @@
     <h1>Lista de Categorias</h1>
     <ul class="list-group mt-3">
     {% for categoria in object_list %}
-        <a href="{% url 'categoria_detail' pk=categoria.id %}" class="list-group-item list-group-item-action">{{ categoria }}</a>
+        <a href="{% url 'categoria_detail' pk=categoria.id %}" class="list-group-item list-group-item-action">{{ categoria.nombre }}</a>
     {% empty %}
         <p>No existen categorías.</p>
     {% endfor %}

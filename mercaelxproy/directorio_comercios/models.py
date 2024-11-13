@@ -47,7 +47,7 @@ class Subcategoria(models.Model):
     categoria = models.ForeignKey(Categoria, on_delete=models.PROTECT)
 
     #--------UD6.3.b--------
-    # el metodo __str__ devuelve una cadena de texto con el código, el nombre y la categoría
+    # el metodo __str__ devuelve una cadena de texto con el codigo de la categoria y el codigo y el nombre de la subcategoria
     def __str__(self):
         return f"{self.categoria.codigo}.{self.codigo}. {self.nombre}"
 

@@ -26,6 +26,8 @@ from core import views as core_views
 from directorio_comercios import views as comercios_views
 
 urlpatterns = [
+    #--------UD6.2.e--------
+    #URLs de la aplicacines
     path('admin/', admin.site.urls),
     path('', common_views.HomeView.as_view(), name='home'),
     path('panel/', common_views.PanelView.as_view(), name='panel'),

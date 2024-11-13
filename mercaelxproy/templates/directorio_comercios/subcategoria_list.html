@@ -1,13 +1,17 @@
+<!--
+------UD6.8.a------
+Template de lista de subcategorías
+-->
 {% extends "common/base_intranet.html" %}
 
 {% block main_content %}
 <div class="container">
-    <h1>Lista de Subcategorias</h1>
+    <h1>Lista de subcategorías</h1>
     <ul class="list-group mt-3">
     {% for subcategoria in object_list %}
         <a href="{% url 'subcategoria_detail' pk=subcategoria.id %}" class="list-group-item list-group-item-action">{{ subcategoria }}</a>
     {% empty %}
-        <p>No existen subcategorías.</p>
+        <p>No existen categorías.</p>
     {% endfor %}
     </ul>
 </div>

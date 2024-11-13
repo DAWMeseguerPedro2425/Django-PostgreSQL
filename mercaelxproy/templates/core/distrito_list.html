@@ -6,7 +6,7 @@
     <h1>Lista de distritos</h1>
     <ul class="list-group mt-3 ">
     {% for distrito in object_list %}
-        <a href="{% url 'distrito_detail' distrito.id %}" class="list-group-item list-group-item-action">{{ distrito }}</a>
+        <a href="{% url 'distrito_detail' distrito.id %}" class="list-group-item list-group-item-action">{{ distrito}}</a>
     {% empty %}
         <p>No existen distritos.</p>
     {% endfor %}

@@ -1,8 +1,14 @@
+<!--
+------UD6.8.a------
+Template de detalle de asociación
+-->
 {% extends "common/base_intranet.html" %}
 
 {% block main_content %}
 <h1>Detalle de asociación</h1>
-<p>
-    {{object.codigo}} - {{object.nombre|safe}}
-</p>
+<p><strong>Nombre:</strong> {{ object.nombre }}</p>
+<p><strong>Dirección:</strong> {{ object.direccion }}</p>
+<p><strong>Ciudad:</strong> {{ object.ciudad }}</p>
+<p><strong>Correo electrónico:</strong> {{ object.correo_electronico }}</p>
+<p><strong>Teléfono:</strong> {{ object.telefono }}</p>
 {% endblock main_content %}

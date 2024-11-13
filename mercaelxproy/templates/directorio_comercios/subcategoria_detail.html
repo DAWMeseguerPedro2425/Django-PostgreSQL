@@ -1,6 +1,13 @@
+<!--
+------UD6.8.a------
+Template de detalle de subcategoría
+-->
 {% extends "common/base_intranet.html" %}
 
 {% block main_content %}
+
 <h1>Detalle de subcategoría</h1>
-<h6>{{ object.nombre }}</h6>
+<p><strong>Código:</strong> {{ object.codigo }}</p>
+<p><strong>Nombre:</strong> {{ object.nombre }}</p>
+<p><strong>Categoría:</strong> <a href="{% url 'categoria_detail' pk=object.categoria.id %}">{{ object.categoria }}</a></p>
 {% endblock main_content %}
