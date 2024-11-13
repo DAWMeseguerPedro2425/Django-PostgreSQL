@@ -20,13 +20,13 @@ from django.conf import settings
 from django.conf.urls.static import static
 from common import views as common_views
 from core import views as core_views
-#--------UD7.b--------
+#--------UD6.7.b--------
 #Importar las vistas de la aplicación directorio_comercios con
 #  el nombre comercios_views
 from directorio_comercios import views as comercios_views
 
 urlpatterns = [
-    #--------UD6.2.e--------
+    #--------UD6.2.e-UD6.7--------
     #URLs de la aplicacines
     path('admin/', admin.site.urls),
     path('', common_views.HomeView.as_view(), name='home'),
@@ -38,7 +38,7 @@ urlpatterns = [
     path('distrito_list/', core_views.DistritoListView.as_view(), name='distrito_list'),
     path('distrito_detail/<int:pk>/', core_views.DistritoDetailView.as_view(), name='distrito_detail'),
     
-    #--------UD7.b--------
+    #--------UD6.7.b--------
     #URLs de la aplicación directorio_comercios
     path('categoria_list/', comercios_views.CategoriaListView.as_view(), name='categoria_list'),
     path('categoria_detail/<int:pk>/', comercios_views.CategoriaDetailView.as_view(), name='categoria_detail'),

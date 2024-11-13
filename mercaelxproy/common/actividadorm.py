@@ -13,9 +13,9 @@ def get_comercios_all():
 def get_cat_3():
     return Categoria.objects.all()[:3]#[:3] para limitar a 3
 
-#Devuelve todas la ciduades cuyo codigo poastal sea 033
+#Devuelve todos la comercios cuyo codigo poastal sea 033
 def get_ra_not_0612():
-    return Ciudad.objects.filter(codigo="033")
+    return Comercio.objects.filter(codigo_postal="033")
 
 #Devuelve un queryset de los comercios cuyo id sea menor a 2, ordénalos por código, descendente.
 #lt = less than / menor que
