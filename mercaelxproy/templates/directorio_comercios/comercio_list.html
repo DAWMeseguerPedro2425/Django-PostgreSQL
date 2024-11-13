@@ -1,7 +1,6 @@
-<!--
-------UD6.8.a------
-Template de lista de comercios
--->
+
+{# ------UD6.8.a------#}
+{#Template de lista de comercios #}
 {% extends "common/base_intranet.html" %}
 
 {% block main_content %}
@@ -15,4 +14,9 @@ Template de lista de comercios
     {% endfor %}
     </ul>
 </div>
+
+{#-------UD6.8.b-----#}
+{# Paginación con include del archivo nuevo de pagination en common #}
+{% include 'common/pagination.html' %}
+
 {% endblock main_content %}

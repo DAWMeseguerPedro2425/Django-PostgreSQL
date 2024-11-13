@@ -1,7 +1,5 @@
-<!--
-------UD6.8.a------
-Template de lista de categorías
--->
+{#------UD6.8.a------#}
+{#Template de lista de categorías #}
 
 {% extends "common/base_intranet.html" %}
 
@@ -16,4 +14,9 @@ Template de lista de categorías
     {% endfor %}
     </ul>
 </div>
+
+{#-------UD6.8.b-----#}
+{# Paginación con include del archivo nuevo de pagination en common #}
+{% include 'common/pagination.html' %}
+
 {% endblock main_content %}
