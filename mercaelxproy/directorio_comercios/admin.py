@@ -4,9 +4,9 @@ from django.contrib import admin
 from .models import Asociacion, Categoria, Subcategoria, Comercio
 from core.models import Ciudad
 
-#--------UD6.3.a-DU6.3.c--------
+#--------UD6.4.a-DU6.4.c--------
 #Registro los modelos en la administración de Django(Asociacion)
-
+#Para entrar en administrcion de Django es User: admin1 Password: Qwerty12
 class AsociacionAdmin(admin.ModelAdmin):# Defino la clase AsociacionAdmin para personalizar la administración del modelo de Asociacion
     # Mostrar codigo_ciudad y nombre en la vista de lista
     list_display = ('codigo_ciudad', 'nombre')
@@ -19,7 +19,8 @@ class AsociacionAdmin(admin.ModelAdmin):# Defino la clase AsociacionAdmin para p
 
 admin.site.register(Asociacion, AsociacionAdmin) # Registro de Asociacion con la clase AsociacionAdmin
 
-#--------UD6.3.a-DU6.3.c--------
+#--------UD6.4.a-DU6.4.c--------
+#Para entrar en administrcion de Django es User: admin1 Password: Qwerty12
 #Registro los modelos en la administración de Django(Categoria)
 class CategoriaAdmin(admin.ModelAdmin):
     list_display = ('codigo', 'nombre')
@@ -28,7 +29,8 @@ class CategoriaAdmin(admin.ModelAdmin):
 
 admin.site.register(Categoria, CategoriaAdmin)
 
-#--------UD6.3.a-DU6.3.c--------
+#--------UD6.4.a-DU6.4.c--------
+#Para entrar en administrcion de Django es User: admin1 Password: Qwerty12
 #Registro los modelos en la administración de Django(Subcategoria)
 class SubcategoriaAdmin(admin.ModelAdmin):
     list_display = ('codigo_categoria', 'codigo', 'nombre')
@@ -44,7 +46,8 @@ class SubcategoriaAdmin(admin.ModelAdmin):
 
 admin.site.register(Subcategoria, SubcategoriaAdmin)
 
-#--------UD6.3.a-DU6.3.c--------
+#--------UD6.4.a-DU6.4.c--------
+#Para entrar en administrcion de Django es User: admin1 Password: Qwerty12
 #Registro los modelos en la administración de Django(Comercio)
 class ComercioAdmin(admin.ModelAdmin):
     list_display = ('codigo_ciudad', 'codigo_categoria', 'codigo_subcategoria', 'nombre', 'codigo_postal')

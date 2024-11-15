@@ -4,6 +4,7 @@ from django.contrib import admin
 from .models import Provincia, Ciudad, Distrito
 
 #--------UD6.4.a-UD6.4.b--------
+#Para entrar en administrcion de Django es User: admin1 Password: Qwerty12
 #Registro los moodelos en la administración de Django(Provincia)
 class ProvinciaAdmin(admin.ModelAdmin): # Defino la clase ProvinciaAdmin para personalizar la administración del modelo de Provincia
     list_display = ('id', 'codigo', 'nombre')  # Mostrar estos campos en la vista de lista
@@ -14,6 +15,7 @@ class ProvinciaAdmin(admin.ModelAdmin): # Defino la clase ProvinciaAdmin para pe
 admin.site.register(Provincia, ProvinciaAdmin) # Registro Provincia con la clase ProvinciaAdmin
 
 #--------UD6.4.a-UD6.4.b--------
+#Para entrar en administrcion de Django es User: admin1 Password: Qwerty12
 #Registro los moodelos en la administración de Django(Ciudad)
 class CiudadAdmin(admin.ModelAdmin):
     list_display = ('codigo_provincia', 'codigo', 'nombre')
@@ -27,7 +29,8 @@ class CiudadAdmin(admin.ModelAdmin):
     
 admin.site.register(Ciudad, CiudadAdmin)
 
-#--------UD6.4.b--------
+#---------UD6.4.a-UD6.4.b--------
+#Para entrar en administrcion de Django es User: admin1 Password: Qwerty12
 #Registro los moodelos en la administración de Django(Distrito)
 class DistritoAdmin(admin.ModelAdmin):
     list_display = ('nombre', 'codigo_ciudad')

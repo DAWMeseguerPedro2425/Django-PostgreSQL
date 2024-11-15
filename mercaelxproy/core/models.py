@@ -7,9 +7,10 @@ class Provincia(models.Model):
     codigo = models.CharField(max_length=10, unique=True)
     nombre = models.CharField(max_length=255, unique=True)
     #--------UD6.3.b--------
-    #El método __str__ devuelve una cadena con el código y el nombre de la provincia
+    #El método __str__ devuelve una cadena con el código y el nombre de la provincia 100 caracteres
     def __str__(self):
         return f"{self.codigo}. {self.nombre[:100]}"
+    
     #--------UD6.4.e-UD6.4.f--------
     #Nombre en singular y plural y ordenar por nombre
     class Meta:

@@ -5,8 +5,9 @@ from django.views.generic import ListView, DetailView
 from directorio_comercios.models import Categoria, Subcategoria, Asociacion, Comercio
 
 #--------UD7.a--------
-#Crear las vistas de la aplicación directorio_comercios 
-# según la tabla 1 de aneño 2
+#Crear las vistas de la aplicación directorio_comercios para mostrar las categorías, subcategorías, asociaciones y comercios
+# según la tabla 1 de anexo 2
+
 class CategoriaListView(ListView): # ListView es una clase de Django que muestra una lista de objetos de un modelo
     model = Categoria
     template_name = 'directorio_comercios/categoria_list.html'

@@ -19,6 +19,7 @@ def get_ra_not_0612():
 
 #Devuelve un queryset de los comercios cuyo id sea menor a 2, ordénalos por código, descendente.
 #lt = less than / menor que
+#- para orden descendente
 def get_com_id_lt_2_cod_des():
     return Comercio.objects.filter(id__lt=2).order_by('-codigo')
 
