@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 import os
+from django.contrib.messages import constants as messages
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -56,6 +57,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
 ]
 
 ROOT_URLCONF = 'mercaelxproy.urls'
@@ -144,3 +146,11 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static') # Añadir nueva
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+#-----UD7.2.e-----
+#Configuración de los mensajes de error para que se muestren con el estilo de bootstrap
+MESSAGE_TAGS = {messages.ERROR: 'danger'}
+
+# settings.py
+
+MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'

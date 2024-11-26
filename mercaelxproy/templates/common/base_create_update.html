@@ -1,0 +1,28 @@
+{#----UF7.2.c----#}
+{#Plantilla de formulario para crear y actualizar objetos#}
+
+{% extends 'common/base.html' %}
+
+{% block content %}
+<div class="container">
+  {% if object %}
+    <h2>Actualizar {{ verbose_name }}</h2>
+  {% else %}
+    <h2>Crear un nuevo {{ verbose_name }}</h2>
+  {% endif %}
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    {% if object %}
+      <input type="submit" value="Actualizar" class="btn btn-primary" />
+    {% else %}
+      <input type="submit" value="Crear" class="btn btn-primary" />
+    {% endif %}
+  </form>
+  {% if object %}
+    <a class="btn btn-danger mt-3" href="{% url url_borrado object.id %}">
+      Eliminar
+    </a>
+  {% endif %}
+</div>
+{% endblock %}
