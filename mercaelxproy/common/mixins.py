@@ -11,7 +11,7 @@ class CreateUpdateMixin:
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['verbose_name'] = self.model._meta.verbose_name
+        context['verbose_name'] = self.model._meta.verbose_name #nombre de la clase en singular especificado en la clase Meta del modelo
         context['url_borrado'] = self.url_borrado
         return context
     

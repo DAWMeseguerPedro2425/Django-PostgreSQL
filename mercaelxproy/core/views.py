@@ -7,6 +7,8 @@ from common.mixins import CreateUpdateMixin
 from django.shortcuts import redirect
 from django.contrib import messages
 from django.db.models.deletion import ProtectedError
+from django.contrib.messages.views import SuccessMessageMixin
+from django.contrib.messages import constants as messages
 
 
 class ProvinciaListView(ListView):
@@ -67,12 +69,14 @@ class ProvUpdateView(CreateUpdateMixin,UpdateView):
 
 
 
-class ProvDeleteView(DeleteView):
+class ProvDeleteView(SuccessMessageMixin, DeleteView):
     model = Provincia
     template_name = 'common/base_confirm_delete.html'
+    titulo = "Eliminar una Provincia"
     success_url = reverse_lazy('provincia_list')
 
-    titulo = "Eliminar una Provincia"
+    success_message = "La provincia ha sido eliminada con éxito."
+    error_message = "No se puede eliminar la provincia porque tiene ciudades asociadas."
     mensaje_confirmacion = "¿Está seguro que quiere eliminar esta Provincia?"
 
     def get_context_data(self, **kwargs):
@@ -84,15 +88,15 @@ class ProvDeleteView(DeleteView):
 
     def get_success_url(self):
         return self.success_url
-
+    
     def delete(self, request, *args, **kwargs):
         self.object = self.get_object()
         try:
-            return super().delete(request, *args, **kwargs)
+            self.object.delete()
+            messages.success(request, self.success_message)
         except ProtectedError:
-            messages.error(request, "No se puede eliminar la provincia porque tiene ciudades asociadas.")
-            return redirect('provincia_list')
-
+            messages.error(request, self.error_message)
+        return redirect(self.success_url)
 
 class CiudadListView(ListView):
     model = Ciudad

@@ -151,6 +151,3 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 #Configuración de los mensajes de error para que se muestren con el estilo de bootstrap
 MESSAGE_TAGS = {messages.ERROR: 'danger'}
 
-# settings.py
-
-MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
