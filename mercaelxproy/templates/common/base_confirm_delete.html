@@ -4,7 +4,7 @@
 
 {% block content %}
 <div class="container">
-  <h2>{{ titulo }}</h2>
+  <h2>Eliminar {{ titulo }}</h2>
   <form method="post">
     {% csrf_token %}
     <p>{{ mensaje_confirmacion }}</p>

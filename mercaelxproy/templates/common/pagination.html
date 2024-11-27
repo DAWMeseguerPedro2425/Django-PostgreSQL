@@ -5,17 +5,17 @@
 <div class="pagination">
     <span class="step-links">
       {% if page_obj.has_previous %}<!--Si hay una página anterior, se muestra el enlace a la primera página y a la página anterior-->
-        <a href="?page=1">&laquo; first</a>
-        <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+        <a href="?{% if request.GET.ordering %}ordering={{ request.GET.ordering }}&{% endif %}page=1">&laquo; Primero</a>
+        <a href="?{% if request.GET.ordering %}ordering={{ request.GET.ordering }}&{% endif %}page={{ page_obj.previous_page_number }}">Anterior</a>
       {% endif %}
   
       <span class="current">
-        Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.<!--Se muestra el número de la página actual y el número total de páginas-->
+        Pagina {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}.<!--Se muestra el número de la página actual y el número total de páginas-->
       </span>
   
       {% if page_obj.has_next %}<!--Si hay una página siguiente, se muestra el enlace a la página siguiente y a la última página-->
-        <a href="?page={{ page_obj.next_page_number }}">next</a>
-        <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+        <a href="?{% if request.GET.ordering %}ordering={{ request.GET.ordering }}&{% endif %}page={{ page_obj.next_page_number }}">Siguiente</a>
+        <a href="?{% if request.GET.ordering %}ordering={{ request.GET.ordering }}&{% endif %}page={{ page_obj.paginator.num_pages }}">Último &raquo;</a>
       {% endif %}
     </span>
   </div>

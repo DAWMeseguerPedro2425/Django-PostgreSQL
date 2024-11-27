@@ -11,7 +11,7 @@ class Asociacion(models.Model):
     ciudad = models.ForeignKey('core.Ciudad', on_delete=models.PROTECT)
     correo_electronico = models.EmailField(blank=True, null=True)
     telefono = models.CharField(max_length=15,blank=True,null=True,
-        validators=[RegexValidator(regex=r'^\+?\d{9,15}$')] # Expresion regular para validar el teléfono
+        #validators=[RegexValidator(regex=r'^\+?\d{9,15}$')] # Expresion regular para validar el teléfono
     )
 
     #--------UD6.3.b--------
@@ -73,7 +73,7 @@ class Comercio(models.Model):
     asociacion = models.ForeignKey(Asociacion, on_delete=models.PROTECT, blank=True, null=True)
     correo_electronico = models.EmailField(blank=True, null=True)
     telefono = models.CharField(max_length=15, blank=True, null=True,
-        validators=[RegexValidator(regex=r'^\+?\d{9,15}$')]# Expresion regular para validar el teléfono copilot
+        #validators=[RegexValidator(regex=r'^\+?\d{9,15}$')]# Expresion regular para validar el teléfono copilot
     )
 
     #--------UD6.3.b--------

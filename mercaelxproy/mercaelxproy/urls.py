@@ -29,6 +29,8 @@ urlpatterns = [
     #--------UD6.2.e-UD6.7--------
     #URLs de la aplicacines
     path('admin/', admin.site.urls),
+
+    # Common URLs
     path('', common_views.HomeView.as_view(), name='home'),
     path('panel/', common_views.PanelView.as_view(), name='panel'),
     

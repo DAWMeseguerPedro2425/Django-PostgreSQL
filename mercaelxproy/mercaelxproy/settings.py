@@ -147,7 +147,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static') # Añadir nueva
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-#-----UD7.2.e-----
+#-----UD7.2.e-UD7.4.a-----
 #Configuración de los mensajes de error para que se muestren con el estilo de bootstrap
 MESSAGE_TAGS = {messages.ERROR: 'danger'}
 
