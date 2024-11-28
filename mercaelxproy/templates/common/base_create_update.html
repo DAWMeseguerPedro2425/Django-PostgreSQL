@@ -1,28 +1,49 @@
-{#----UF7.2.c----#}
-{#Plantilla de formulario para crear y actualizar objetos#}
-
 {% extends 'common/base.html' %}
+{% load crispy_forms_tags %}
 
+{# ----UD7.4.b---- #}
+{# Plantilla de formulario para crear y actualizar objetos con crispy #}
 {% block content %}
 <div class="container">
+    <h2>{{object|yesno:'Actualizar,Crear nuevo'}} {{ verbose_name }}</h2>
+    
+    <form method="post" enctype="multipart/form-data" novalidate>
+        {% csrf_token %}
+        {% crispy form %}
+        
+        <input type="submit" class="btn btn-primary me-2" value="{{object|yesno:'Actualizar,Crear'}}" >
+        
+        {% if object %}
+        <a class="btn btn-danger" role="button" href="{% url url_borrado object.id %}">
+            Eliminar
+        </a>
+        {% endif %}
+    </form>
+</div>
+{% endblock %}
+
+{# ----UF7.2.c---- #}
+{# Versión anterior de la plantilla #}
+{% comment %}
+<div class="container">
   {% if object %}
-    <h2>Actualizar {{ verbose_name }}</h2>
+  <h2>Actualizar {{ verbose_name }}</h2>
   {% else %}
-    <h2>Crear un nuevo {{ verbose_name }}</h2>
+  <h2>Crear un nuevo {{ verbose_name }}</h2>
   {% endif %}
   <form method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{ form.as_p }}
+    {% csrf_token %} 
+    {{ form.as_p }} 
     {% if object %}
-      <input type="submit" value="Actualizar" class="btn btn-primary" />
+    <input type="submit" value="Actualizar" class="btn btn-primary" />
     {% else %}
-      <input type="submit" value="Crear" class="btn btn-primary" />
+    <input type="submit" value="Crear" class="btn btn-primary" />
     {% endif %}
   </form>
   {% if object %}
-    <a class="btn btn-danger mt-3" href="{% url url_borrado object.id %}">
-      Eliminar
-    </a>
+  <a class="btn btn-danger mt-3" href="{% url url_borrado object.id %}">
+    Eliminar
+  </a>
   {% endif %}
 </div>
-{% endblock %}
+{% endcomment %}

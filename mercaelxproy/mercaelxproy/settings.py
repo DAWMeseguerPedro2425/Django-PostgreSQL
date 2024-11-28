@@ -47,6 +47,10 @@ INSTALLED_APPS = [
     'core',
     'directorio_comercios',
     'anuncios',
+    #-----UD7.4.b-----
+    #Añadir crispy para usar bootstrap5
+    'crispy_forms',
+    'crispy_bootstrap5',
 ]
 
 MIDDLEWARE = [
@@ -151,3 +155,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 #Configuración de los mensajes de error para que se muestren con el estilo de bootstrap
 MESSAGE_TAGS = {messages.ERROR: 'danger'}
 
+#-----UD7.4.b-----
+#Configuración de crispy para que use bootstrap5
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+CRISPY_TEMPLATE_PACK = "bootstrap5"
