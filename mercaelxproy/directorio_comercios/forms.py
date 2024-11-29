@@ -24,20 +24,21 @@ class AsociacionForm(forms.ModelForm):
         self.helper.layout = Layout(
             Div(
                 Field('nombre'),
-                Field('descripcion'),
-                css_class="mb-3"
+                css_class='row mb-3'
             ),
-            HTML('<hr>'),
+            Div(
+                Field('direccion'),
+                css_class='row mb-3'
+            ),
+            Div(
+                Field('ciudad'),
+                css_class='row mb-3'
+            ),
             Div(
                 Div(Field('telefono'), css_class="col-6"),
                 Div(Field('correo_electronico'), css_class="col-6"),
                 css_class="row mb-3"
             ),
-            Div(
-                Field('direccion'),
-                Field('web'),
-                css_class="mb-3"
-            )
         )
 
     #----UD7.3.b-----
@@ -70,9 +71,9 @@ class CategoriaForm(forms.ModelForm):
         #Disposición de Categoría según la tabla 2: código (3 columnas) y nombre (9 columnas) en la misma fila
         self.helper.layout = Layout(
             Div(
-                Field('nombre'),
-                Field('descripcion'),
-                css_class="mb-3"
+                Div(Field('codigo'), css_class="col-3"),
+                Div(Field('nombre'), css_class="col-9"),
+                css_class="row mb-3"
             )
         )
 
@@ -88,13 +89,13 @@ class SubcategoriaForm(forms.ModelForm):
         self.helper = FormHelper(self)
         self.helper.form_tag = False
         #----UD7.4.d----
-        #Disposición de Subcategoría según la tabla 2: categoría en fila completa, código (3 columnas) y nombre (9 columnas) en la misma fila
+        #Disposición de Subcategoría según la tabla 2: código (3 columnas), nombre (9 columnas) y categoría (12 columnas) en la misma fila
         self.helper.layout = Layout(
             Div(
-                Field('categoria'),
-                Field('nombre'),
-                Field('descripcion'),
-                css_class="mb-3"
+                Div(Field('codigo'), css_class="col-3"),
+                Div(Field('nombre'), css_class="col-9"),
+                Div(Field('categoria'), css_class="col-12"),
+                css_class="row mb-3"
             )
         )
 
@@ -110,33 +111,32 @@ class ComercioForm(forms.ModelForm):
         self.helper = FormHelper(self)
         self.helper.form_tag = False
         #----UD7.4.d----
-        #Disposición de Comercio según la tabla 2: nombre y descripción en fila completa, correo y teléfono (6 columnas cada uno), dirección y web (6 columnas cada uno) en la misma fila
+        #Disposición de Comercio según la tabla 2: nombre (6 columnas), asociación (6 columnas), ciudad (4 columnas),
+        #  código postal (4 columnas), dirección (12 columnas) en la misma fila
         self.helper.layout = Layout(
             Div(
-                Field('nombre'),
-                Field('descripcion'),
-                css_class="mb-3"
-            ),
-            HTML('<hr>'),
-            Div(
-                Div(Field('telefono'), css_class="col-6"),
-                Div(Field('correo_electronico'), css_class="col-6"),
-                css_class="row mb-3"
-            ),
-            Div(
-                Field('direccion'),
-                Field('web'),
-                css_class="mb-3"
-            ),
-            HTML('<hr>'),
-            Div(
+                Div(Field('nombre'), css_class="col-6"),
                 Div(Field('asociacion'), css_class="col-6"),
-                Div(Field('subcategoria'), css_class="col-6"),
+                css_class="row mb-3"
+            ),
+            HTML('<hr>'),
+            Div(
+                Div(Field('ciudad'), css_class="col-4"),
+                Div(Field('codigo_postal'), css_class="col-4"),
                 css_class="row mb-3"
             ),
             Div(
-                Field('imagen'),
-                css_class="mb-3"
+                Div(Field('direccion'), css_class="col-12"),
+                css_class="row mb-3"
+            ),
+            Div(
+                Div(Field('correo_electronico'), css_class="col-6"),
+                Div(Field('telefono'), css_class="col-6"),
+                css_class="row mb-3"
+            ),
+            Div(
+                Div(Field('asociacion'), css_class="col-12"),
+                css_class="row mb-3"
             )
         )
 

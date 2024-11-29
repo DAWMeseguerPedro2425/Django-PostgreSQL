@@ -39,12 +39,16 @@ class CiudadForm(forms.ModelForm):
         self.helper = FormHelper(self)
         self.helper.form_tag = False
         #----UD7.4.d----
-        #Disposición de Ciudad según la tabla 2: provincia en fila completa, código (3 columnas) y nombre (9 columnas) en la misma fila
+        #Disposición de Ciudad según la tabla 2: código (3 columnas), nombre (9 columnas) en la misma fila
+        #y provincia en otra fila ocupando todo el ancho
         self.helper.layout = Layout(
-            Div(Field('provincia'), css_class="mb-3"),
             Div(
                 Div(Field('codigo'), css_class="col-3"),
                 Div(Field('nombre'), css_class="col-9"),
+                css_class="row mb-3"
+            ),
+            Div(
+                Div(Field('provincia'), css_class="col-12"),
                 css_class="row mb-3"
             )
         )
@@ -61,11 +65,10 @@ class DistritoForm(forms.ModelForm):
         self.helper = FormHelper(self)
         self.helper.form_tag = False
         #----UD7.4.d----
-        #Disposición de Distrito según la tabla 2: nombre y ciudad (6 columnas cada uno) en la misma fila
+        #Disposición de Distrito según la tabla 2: nombre (6 columnas)
         self.helper.layout = Layout(
             Div(
                 Div(Field('nombre'), css_class="col-6"),
-                Div(Field('ciudad'), css_class="col-6"),
                 css_class="row mb-3"
             )
         )

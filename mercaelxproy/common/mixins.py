@@ -17,8 +17,12 @@ class CreateUpdateMixin(SuccessMessageMixin):
     #fields = '__all__'#campos que se van a mostrar en el formulario, __all__ significa que se van a mostrar todos los campos
     template_name = 'common/base_create_update.html'
     success_message = None
-    form_class = None  # Permite la especificación del formulario en las vistas
+    #----UD7.3.a-----
+    # Forma del formulario para crear y actualizar cada vista
+    form_class = None
 
+    #----UD7.2.d-----
+    # Contexto que se pasa a la plantilla y url de redirección
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['verbose_name'] = self.model._meta.verbose_name #nombre de la clase en singular especificado en la clase Meta del modelo
@@ -33,31 +37,34 @@ class CreateUpdateMixin(SuccessMessageMixin):
 #Clase de mixin para elimnar un projecot y verificar las dependencias
 class DeleteMixin(SuccessMessageMixin):
     template_name = 'common/base_confirm_delete.html' # ruta plantilla
-    success_url = None
-    success_message = None
-    error_message = None
-    mensaje_confirmacion = None
+    success_url = None #url de redirección
+    success_message = None #mensaje de eliminacion exitoso
+    error_message = None #mensaje de fallo por dependencias de delete
+    mensaje_confirmacion = None #mensaje de eliminacion especificado
+    objectoDependiente = None #objeto dependiente para verificar si se puede eliminar
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['titulo'] = self.model._meta.verbose_name # titulo en la plantilla
-        context['mensaje_confirmacion'] = self.mensaje_confirmacion # mensaje de eleimincaion especificado
-        context['cancel_url'] = self.success_url # ur en el bonton de cancel
+        context['mensaje_confirmacion'] = self.mensaje_confirmacion # mensaje de eliminacion especificado
+        context['cancel_url'] = self.success_url # url en el bonton de cancel
         return context
 
     def get_success_url(self):
         return self.success_url
 
-
+    #----UD7.2.f-----
+    # Verificamos si el objeto tiene dependencias usando el atributo objectoDependiente
     def form_valid(self, form):
-        try:
-            return super().form_valid(form)
-        except ProtectedError:
+        # self.model.__name__.lower() es el nombre del modelo en minúsculas para usar en el filtro de objetos dependientes y 
+        # comprobar si existe un objeto dependiente de ese modelo
+        if self.objectoDependiente and self.objectoDependiente.objects.filter(**{self.model.__name__.lower(): self.object}).exists():
             messages.error(
                 self.request,
                 self.error_message
             )
             return HttpResponseRedirect(self.success_url)
+        return super().form_valid(form)
 
 #----UD7.2.g----
 #Clase de mixin para ordenancion con query_set
