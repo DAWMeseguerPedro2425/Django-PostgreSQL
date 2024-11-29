@@ -90,9 +90,6 @@ class ProvDeleteView(DeleteMixin, DeleteView):
     success_message = "La provincia ha sido eliminada con éxito." #Mesaje de eleiminacion exitoso
     error_message = "No se puede eliminar la provincia porque tiene ciudades asociadas."#Mensaje de fallo por dependencias de delete
     mensaje_confirmacion = "¿Está seguro que quiere eliminar esta Provincia?" #Mensaje de la pantalla de delete
-    #----UD7.2.f-----
-    # Verificamos si el objeto tiene dependencias usando el atributo objectoDependiente 
-    objectDependiente = Ciudad
 
 
     
@@ -168,9 +165,6 @@ class CiudadDeleteView(DeleteMixin, DeleteView):
     success_message = "La ciudad ha sido eliminada con éxito."
     error_message = "No se puede eliminar la ciudad porque tiene distritos asociados." 
     mensaje_confirmacion = "¿Está seguro que quiere eliminar esta Ciudad?"
-    #----UD7.2.f-----
-    # Verificamos si el objeto tiene dependencias usando el atributo objectoDependiente 
-    objectDependiente = Distrito
 
 
 #----UD7.2.g----
@@ -246,7 +240,4 @@ class DistDeleteView(DeleteMixin, DeleteView):
     success_message = "El distrito ha sido eliminado con éxito."
     error_message = "No se puede eliminar el distrito porque tiene comercios asociados."
     mensaje_confirmacion = "¿Está seguro que quiere eliminar este Distrito?"
-    #----UD7.2.f-----
-    # Verificamos si el objeto tiene dependencias usando el atributo objectoDependiente 
-    objectDependiente = Comercio
 

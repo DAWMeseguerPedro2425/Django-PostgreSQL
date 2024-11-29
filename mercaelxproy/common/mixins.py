@@ -54,17 +54,16 @@ class DeleteMixin(SuccessMessageMixin):
         return self.success_url
 
     #----UD7.2.f-----
-    # Verificamos si el objeto tiene dependencias usando el atributo objectoDependiente
+    # Verificamos si el objeto tiene dependencias
     def form_valid(self, form):
-        # self.model.__name__.lower() es el nombre del modelo en minúsculas para usar en el filtro de objetos dependientes y 
-        # comprobar si existe un objeto dependiente de ese modelo
-        if self.objectoDependiente and self.objectoDependiente.objects.filter(**{self.model.__name__.lower(): self.object}).exists():
+        try:
+            return super().form_valid(form)
+        except ProtectedError:
             messages.error(
                 self.request,
                 self.error_message
             )
             return HttpResponseRedirect(self.success_url)
-        return super().form_valid(form)
 
 #----UD7.2.g----
 #Clase de mixin para ordenancion con query_set

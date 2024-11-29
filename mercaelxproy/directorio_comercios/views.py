@@ -63,9 +63,6 @@ class CategoriaDeleteView(DeleteMixin, DeleteView):
     success_message = "Categoría eliminada correctamente"
     error_message = "No se puede eliminar la categoría porque tiene subcategorías asociadas"
     mensaje_confirmacion = "¿Está seguro de que desea eliminar esta categoría?"
-    #----UD7.2.f-----
-    # Verificamos si el objeto tiene dependencias usando el atributo objectoDependiente 
-    objectoDependiente = Subcategoria
 
 #----UD7.2.g----
 #Llamada a la clase de OrderedListMixin para ordering por query de la list
@@ -172,9 +169,6 @@ class AsoDeleteView(DeleteMixin, DeleteView):
     success_message = "La asociación ha sido eliminada con éxito."
     error_message = "No se puede eliminar la asociación porque tiene comercios asociados."
     mensaje_confirmacion = "¿Está seguro que quiere eliminar esta Asociación?"
-    #----UD7.2.f-----
-    # Verificamos si el objeto tiene dependencias usando el atributo objectoDependiente 
-    objectoDependiente = Comercio
 
 
 #----UD7.2.g----
@@ -227,8 +221,4 @@ class ComercioDeleteView(DeleteMixin, DeleteView):
     #template_name = 'common/base_confirm_delete.html'
     success_url = reverse_lazy('comercio_list')
     success_message = "El comercio ha sido eliminado con éxito."
-    error_message = "No se puede eliminar el comercio porque tiene dependencias asociadas."
     mensaje_confirmacion = "¿Está seguro que quiere eliminar este Comercio?"
-    #----UD7.2.f-----
-    # Verificamos si el objeto tiene dependencias usando el atributo objectoDependiente 
-    objectoDependiente = None
