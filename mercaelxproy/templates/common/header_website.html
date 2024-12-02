@@ -4,7 +4,9 @@
   </button>
   <a class="navbar-brand col-md-3 col-lg-2 px-3 ml-5" href="{% url 'home' %}">mercaelx</a>
 
-  <div class="navbar-nav">
+  <!--UD8.2.a-UD8.2.b-->
+  <!--Navegación de login y logout-->
+  {% comment %} <div class="navbar-nav">
     <div class="nav-item text-nowrap">
       {% if user.is_authenticated %}
         <a class="nav-link px-3" href="{% url 'logout' %}">Log out</a>
@@ -12,5 +14,22 @@
         <a class="nav-link px-3" href="{% url 'login' %}">Log in</a>
       {% endif %}
     </div>
+  </div> {% endcomment %}
+  <!--UD8.4-->
+  <!--Navegación de email y logout con django-allauth-->
+  <div class="navbar-nav">
+    {% if user.is_authenticated %}
+      <div class="d-flex">
+        <a class="nav-link px-3" href="{% url 'account_email' %}">
+          {{ user.email }}
+        </a>
+        <a class="nav-link px-3" href="{% url 'account_logout' %}">Cerrar Sesión</a>
+      </div>
+    {% else %}
+      <div class="d-flex">
+        <a class="nav-link px-3" href="{% url 'account_login' %}">Iniciar Sesión</a>
+        <a class="nav-link px-3" href="{% url 'account_signup' %}">Registrarse</a>
+      </div>
+    {% endif %}
   </div>
 </header>

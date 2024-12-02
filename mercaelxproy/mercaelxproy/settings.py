@@ -54,7 +54,13 @@ INSTALLED_APPS = [
 
     #----UD8.1.a----
     #Añadir la aplicación de usuarios
-    'usuarios',
+    #'usuarios',
+    #-----UD8.4-----
+    #Añadir allauth para autenticación
+    'django.contrib.sites', 
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
 ]
 
 MIDDLEWARE = [
@@ -65,7 +71,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-
+    #-----UD8.4-----
+    #Añadir middleware de allauth
+    'allauth.account.middleware.AccountMiddleware',
 ]
 
 ROOT_URLCONF = 'mercaelxproy.urls'
@@ -164,17 +172,48 @@ MESSAGE_TAGS = {messages.ERROR: 'danger'}
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
 
-#----UD8.1.a-UD8.2.b----
-#Añadir el modelo de usuario para que django lo use
-AUTH_USER_MODEL = 'usuarios.MyUser'
-
 
 #----UD8.2.a-UD8.2.b----
 #Redirección de login y logout
 LOGIN_REDIRECT_URL = 'panel'
 LOGOUT_REDIRECT_URL = 'home'
 
+
+#----UD8.1.a-UD8.2.b----
+#Añadir el modelo de usuario para que django lo use
+# AUTH_USER_MODEL = 'usuarios.MyUser'
+
+
 #----UD8.3----
 #URL de login
-LOGIN_URL = 'login'
+#LOGIN_URL = 'login'
 
+
+#-----UD8.4-----
+# Configuración del sitio
+SITE_ID = 1
+
+#-----UD8.4-----
+#Añadir autenticación de allauth
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
+
+#-----UD8.4-----
+# Configuración de Allauth
+ACCOUNT_EMAIL_VERIFICATION = 'none'  # Desactivada la verificación por email
+ACCOUNT_AUTHENTICATION_METHOD = 'email'  # Uso de  email para autenticación
+ACCOUNT_EMAIL_REQUIRED = True  # Email requerido para el registro
+ACCOUNT_USERNAME_REQUIRED = False  # No requiere nombre de usuario
+ACCOUNT_UNIQUE_EMAIL = True  # Email debe ser único
+
+#-----UD8.5-----
+# Configuración de Email para el envío de correos
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'mail.gmx.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True  # Cambia a False si usas SSL
+EMAIL_HOST_USER = ' manuel6969@gmx.es' 
+EMAIL_HOST_PASSWORD = 'LVIAJKFD5MNMJ4T64DKV'
+DEFAULT_FROM_EMAIL = 'manuel6969@gmx.es'
