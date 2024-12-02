@@ -51,6 +51,10 @@ INSTALLED_APPS = [
     #Añadir crispy para usar bootstrap5
     'crispy_forms',
     'crispy_bootstrap5',
+
+    #----UD8.1.a----
+    #Añadir la aplicación de usuarios
+    'usuarios',
 ]
 
 MIDDLEWARE = [
@@ -159,3 +163,18 @@ MESSAGE_TAGS = {messages.ERROR: 'danger'}
 #Configuración de crispy para que use bootstrap5
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
+
+#----UD8.1.a-UD8.2.b----
+#Añadir el modelo de usuario para que django lo use
+AUTH_USER_MODEL = 'usuarios.MyUser'
+
+
+#----UD8.2.a-UD8.2.b----
+#Redirección de login y logout
+LOGIN_REDIRECT_URL = 'panel'
+LOGOUT_REDIRECT_URL = 'home'
+
+#----UD8.3----
+#URL de login
+LOGIN_URL = 'login'
+

@@ -20,6 +20,8 @@ from django.conf import settings
 from django.conf.urls.static import static
 from common import views as common_views
 from core import views as core_views
+from usuarios import views as usuarios_views
+
 #--------UD6.7.b--------
 #Importar las vistas de la aplicación directorio_comercios con
 #  el nombre comercios_views
@@ -91,6 +93,11 @@ urlpatterns = [
     path('comercio_create/', comercios_views.ComercioCreateView.as_view(), name='comercio_create'),
     path('comercio_update/<int:pk>/', comercios_views.ComercioUpdateView.as_view(), name='comercio_update'),
     path('comercio_delete/<int:pk>/', comercios_views.ComercioDeleteView.as_view(), name='comercio_delete'),
+
+    #----UD8.2.a----
+    # URLs de usuarios
+    path('login/', usuarios_views.CustomLoginView.as_view(), name='login'),
+    path('logout/', usuarios_views.CustomLogoutView.as_view(), name='logout'),
 ]
 
 #-----UD6.2.e-----
