@@ -3,28 +3,24 @@ from django.views.generic import ListView, DetailView
 from core.models import Provincia, Ciudad, Distrito
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
-from common.mixins import CreateUpdateMixin, DeleteMixin, OrderedListMixin
-from django.shortcuts import redirect
+from common.mixins import CreateUpdateMixin, DeleteMixin, OrderedListMixin, LoginRequiredMixin
 from .forms import *
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 
 #----UD7.2.g----
 #Llamada a la clase de OrderedListMixin para ordering por query de la list
-#----UD8.3.a----
-#Decorador de login_required - solo se puede acceder si el usuario está autenticado 
-@method_decorator(login_required, name='dispatch')
-class ProvinciaListView(OrderedListMixin, ListView):
+#----UD8.3----
+#Vistas de provincias con login_required para acceder a las vistas
+class ProvinciaListView(LoginRequiredMixin, OrderedListMixin, ListView):
     model = Provincia
     template_name = 'core/provincia_list.html'
     #----UD6.8.b----
     #pagina_by que sirve para paginar los resultados usando pagination.html
     paginate_by = 3
 
-#----UD8.3.a----
-#Decorador de login_required - solo se puede acceder si el usuario está autenticado 
-@method_decorator(login_required, name='dispatch')
-class ProvinciaDetailView(DetailView):
+#----UD8.3----
+class ProvinciaDetailView(LoginRequiredMixin, DetailView):
     model = Provincia
     template_name = 'core/provincia_detail.html'
     #----UD6.8.b----
@@ -34,10 +30,8 @@ class ProvinciaDetailView(DetailView):
 #----UD7.2.a-UD7.2.d-----
 #Vista de crear, actualizar y eliminar una provincia
 #version con mixin
-#----UD8.3.a----
-#Decorador de login_required - solo se puede acceder si el usuario está autenticado 
-@method_decorator(login_required, name='dispatch')
-class ProvCreateView(CreateUpdateMixin,CreateView):
+#----UD8.3----
+class ProvCreateView(LoginRequiredMixin, CreateUpdateMixin,CreateView):
     model = Provincia
     #template_name = 'common/base_create_update.html'
     #fields = '__all__' #campos que se van a mostrar en el formulario, __all__ significa que se van a mostrar todos los campos
@@ -60,10 +54,8 @@ class ProvCreateView(CreateUpdateMixin,CreateView):
     # def get_success_url(self):
     #     return reverse_lazy('provincia_update', kwargs={'pk': self.object.pk})
 
-#----UD8.3.a----
-#Decorador de login_required - solo se puede acceder si el usuario está autenticado 
-@method_decorator(login_required, name='dispatch')
-class ProvUpdateView(CreateUpdateMixin,UpdateView):
+#----UD8.3----
+class ProvUpdateView(LoginRequiredMixin, CreateUpdateMixin,UpdateView):
     model = Provincia
     #template_name = 'common/base_create_update.html'
     #fields = '__all__'
@@ -96,10 +88,8 @@ class ProvUpdateView(CreateUpdateMixin,UpdateView):
 
 #----UD7.2.f-----
 #version delete mixin provincia
-#----UD8.3.a----
-#Decorador de login_required - solo se puede acceder si el usuario está autenticado 
-@method_decorator(login_required, name='dispatch')
-class ProvDeleteView(DeleteMixin, DeleteView):
+#----UD8.3----
+class ProvDeleteView(LoginRequiredMixin, DeleteMixin, DeleteView):
     model = Provincia
     #template_name = 'common/base_confirm_delete.html'
     success_url = reverse_lazy('provincia_list')
@@ -111,20 +101,17 @@ class ProvDeleteView(DeleteMixin, DeleteView):
     
 #----UD7.2.g----
 #Llamada a la clase de OrderedListMixin para ordering por query de la list
-#----UD8.3.a----
-#Decorador de login_required - solo se puede acceder si el usuario está autenticado 
-@method_decorator(login_required, name='dispatch')
-class CiudadListView(OrderedListMixin, ListView):
+#----UD8.3----
+#Vistas de ciudades con login_required para acceder a las vistas
+class CiudadListView(LoginRequiredMixin, OrderedListMixin, ListView):
     model = Ciudad
     template_name = 'core/ciudad_list.html'
     #----UD6.8.b----
     #pagina_by que sirve para paginar los resultados usando pagination.html
     paginate_by = 3
 
-#----UD8.3.a----
-#Decorador de login_required - solo se puede acceder si el usuario está autenticado 
-@method_decorator(login_required, name='dispatch')
-class CiudadDetailView(DetailView):
+#----UD8.3----
+class CiudadDetailView(LoginRequiredMixin, DetailView):
     model = Ciudad
     template_name = 'core/ciudad_detail.html'
     #----UD6.8.b----
@@ -133,10 +120,8 @@ class CiudadDetailView(DetailView):
 
 #----UD7.2.a----
 #Vista de crear, actualizar y eliminar una ciudad
-#----UD8.3.a----
-#Decorador de login_required - solo se puede acceder si el usuario está autenticado 
-@method_decorator(login_required, name='dispatch')
-class CiudadCreateView(CreateUpdateMixin, CreateView):
+#----UD8.3----
+class CiudadCreateView(LoginRequiredMixin, CreateUpdateMixin, CreateView):
     model = Ciudad
     #template_name = 'common/base_create_update.html'
     #fields = '__all__'
@@ -156,10 +141,8 @@ class CiudadCreateView(CreateUpdateMixin, CreateView):
     # def get_success_url(self):
     #     return reverse_lazy('ciudad_update', kwargs={'pk': self.object.pk})
 
-#----UD8.3.a----
-#Decorador de login_required - solo se puede acceder si el usuario está autenticado 
-@method_decorator(login_required, name='dispatch')
-class CiudadUpdateView(CreateUpdateMixin, UpdateView):
+#----UD8.3----
+class CiudadUpdateView(LoginRequiredMixin, CreateUpdateMixin, UpdateView):
     model = Ciudad
     #template_name = 'common/base_create_update.html'
     #fields = '__all__'
@@ -186,10 +169,8 @@ class CiudadUpdateView(CreateUpdateMixin, UpdateView):
 
 #----UD7.2.f-----
 # version delete mixin ciudad
-#----UD8.3.a----
-#Decorador de login_required - solo se puede acceder si el usuario está autenticado 
-@method_decorator(login_required, name='dispatch')
-class CiudadDeleteView(DeleteMixin, DeleteView):
+#----UD8.3----
+class CiudadDeleteView(LoginRequiredMixin, DeleteMixin, DeleteView):
     model = Ciudad
     #template_name = 'common/base_confirm_delete.html'
     success_url = reverse_lazy('ciudad_list')
@@ -200,20 +181,17 @@ class CiudadDeleteView(DeleteMixin, DeleteView):
 
 #----UD7.2.g----
 #Llamada a la clase de OrderedListMixin para ordering por query de la list
-#----UD8.3.a----
-#Decorador de login_required - solo se puede acceder si el usuario está autenticado 
-@method_decorator(login_required, name='dispatch')
-class DistritoListView(OrderedListMixin, ListView):
+#----UD8.3----
+#Vistas de distritos con login_required para acceder a las vistas
+class DistritoListView(LoginRequiredMixin, OrderedListMixin, ListView):
     model = Distrito
     template_name = 'core/distrito_list.html'
     #----UD6.8.b----
     #pagina_by que sirve para paginar los resultados usando pagination.html
     paginate_by = 3
 
-#----UD8.3.a----
-#Decorador de login_required - solo se puede acceder si el usuario está autenticado 
-@method_decorator(login_required, name='dispatch')
-class DistritoDetailView(DetailView):
+#----UD8.3----
+class DistritoDetailView(LoginRequiredMixin, DetailView):
     model = Distrito
     template_name = 'core/distrito_detail.html'
     #----UD6.8.b----
@@ -222,10 +200,8 @@ class DistritoDetailView(DetailView):
 
 #----UD7.2.a----
 #Vista de crear, actualizar y eliminar un distrito
-#----UD8.3.a----
-#Decorador de login_required - solo se puede acceder si el usuario está autenticado 
-@method_decorator(login_required, name='dispatch')
-class DistCreateView(CreateUpdateMixin, CreateView):
+#----UD8.3----
+class DistCreateView(LoginRequiredMixin, CreateUpdateMixin, CreateView):
     model = Distrito
     #template_name = 'common/base_create_update.html'
     #fields = '__all__'
@@ -246,10 +222,8 @@ class DistCreateView(CreateUpdateMixin, CreateView):
     # def get_success_url(self):
     #     return reverse_lazy('distrito_update', kwargs={'pk': self.object.pk})
 
-#----UD8.3.a----
-#Decorador de login_required - solo se puede acceder si el usuario está autenticado 
-@method_decorator(login_required, name='dispatch')
-class DistUpdateView(CreateUpdateMixin, UpdateView):
+#----UD8.3----
+class DistUpdateView(LoginRequiredMixin, CreateUpdateMixin, UpdateView):
     model = Distrito
     #template_name = 'common/base_create_udpate.html'
     fields = '__all__'
@@ -276,10 +250,8 @@ class DistUpdateView(CreateUpdateMixin, UpdateView):
 
 #----UD7.2.f-----
 # version delete mixin distrito
-#----UD8.3.a----
-#Decorador de login_required - solo se puede acceder si el usuario está autenticado 
-@method_decorator(login_required, name='dispatch')
-class DistDeleteView(DeleteMixin, DeleteView):
+#----UD8.3----
+class DistDeleteView(LoginRequiredMixin, DeleteMixin, DeleteView):
     model = Distrito
     #template_name = 'common/base_confirm_delete.html'
     success_url = reverse_lazy('distrito_list')

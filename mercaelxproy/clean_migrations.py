@@ -1,5 +1,5 @@
 import os
-
+#Metedo creado por IA para eliminar las migraciones de la base de datos y solucionar el problema de las migraciones
 def clean_migrations():
     # Obtener el directorio actual
     project_dir = os.getcwd()

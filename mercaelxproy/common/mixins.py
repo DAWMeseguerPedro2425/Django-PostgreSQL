@@ -4,6 +4,8 @@ from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib import messages
 from django.http import HttpResponseRedirect
 from django.db.models import ProtectedError
+from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
 
 
 
@@ -74,3 +76,11 @@ class OrderedListMixin:
         if ordering == 'desc':
             return queryset.order_by('-id')
         return queryset.order_by('id')
+
+#----UD8.3---
+# Mixin para requerir que el usuario esté autenticado para acceder a las vistas
+class LoginRequiredMixin:
+    #Decorador para requerir que el usuario esté autenticado para acceder a las vistas
+    @method_decorator(login_required)
+    def dispatch(self, *args, **kwargs):
+        return super().dispatch(*args, **kwargs)

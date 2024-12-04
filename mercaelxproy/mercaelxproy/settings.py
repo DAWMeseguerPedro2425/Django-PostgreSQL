@@ -201,19 +201,19 @@ AUTHENTICATION_BACKENDS = [
 ]
 
 #-----UD8.4-----
-# Configuración de Allauth
-ACCOUNT_EMAIL_VERIFICATION = 'none'  # Desactivada la verificación por email
-ACCOUNT_AUTHENTICATION_METHOD = 'email'  # Uso de  email para autenticación
-ACCOUNT_EMAIL_REQUIRED = True  # Email requerido para el registro
-ACCOUNT_USERNAME_REQUIRED = False  # No requiere nombre de usuario
-ACCOUNT_UNIQUE_EMAIL = True  # Email debe ser único
+#Configuración de Allauth
+ACCOUNT_EMAIL_VERIFICATION = 'none'  #Desactivada la verificación por email
+ACCOUNT_AUTHENTICATION_METHOD = 'email'  #Uso de email para autenticación
+ACCOUNT_EMAIL_REQUIRED = True  #Email requerido para el registro
+ACCOUNT_USERNAME_REQUIRED = False  #No requiere nombre de usuario
+ACCOUNT_UNIQUE_EMAIL = True  #Email debe ser único
 
 #-----UD8.5-----
 # Configuración de Email para el envío de correos
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'mail.gmx.com'
 EMAIL_PORT = 587
-EMAIL_USE_TLS = True  # Cambia a False si usas SSL
-EMAIL_HOST_USER = ' manuel6969@gmx.es' 
+EMAIL_USE_TLS = True 
+EMAIL_HOST_USER = 'manuel6969@gmx.es' 
 EMAIL_HOST_PASSWORD = 'LVIAJKFD5MNMJ4T64DKV'
 DEFAULT_FROM_EMAIL = 'manuel6969@gmx.es'

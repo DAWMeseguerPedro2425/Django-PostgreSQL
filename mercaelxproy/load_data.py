@@ -1,6 +1,8 @@
 import os
 import django
 
+#Metodo creado por IA para cargar datos de ejemplo en la base de datos despues de eliminar las migraciones
+
 # Configuración del entorno Django
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'mercaelxproy.settings')
 django.setup()
