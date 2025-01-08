@@ -6,18 +6,15 @@ def create_initial_data(apps, schema_editor):
     Ciudad = apps.get_model('core', 'Ciudad')
     Distrito = apps.get_model('core', 'Distrito')
 
-    # Crear provincias
     provincia1 = Provincia.objects.create(codigo="ALC", nombre="Alicante")
     provincia2 = Provincia.objects.create(codigo="VAL", nombre="Valencia")
 
-    # Crear ciudades (5 ciudades distintas)
     ciudad1 = Ciudad.objects.create(codigo="ORI", nombre="Orihuela", provincia=provincia1)
     ciudad2 = Ciudad.objects.create(codigo="ALC", nombre="Alicante", provincia=provincia1)
     ciudad3 = Ciudad.objects.create(codigo="VAL", nombre="Valencia", provincia=provincia2)
     ciudad4 = Ciudad.objects.create(codigo="TOR", nombre="Torrent", provincia=provincia2)
     ciudad5 = Ciudad.objects.create(codigo="GAN", nombre="Gandía", provincia=provincia2)
 
-    # Crear distritos (1 distrito por ciudad)
     Distrito.objects.create(ciudad=ciudad1, nombre="Centro")
     Distrito.objects.create(ciudad=ciudad2, nombre="Santa Cruz")
     Distrito.objects.create(ciudad=ciudad3, nombre="Ciutat Vella")

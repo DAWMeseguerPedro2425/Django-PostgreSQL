@@ -14,7 +14,6 @@ def create_initial_data(apps, schema_editor):
     ciudad4 = Ciudad.objects.get(codigo="TOR")
     ciudad5 = Ciudad.objects.get(codigo="GAN")
 
-    # Crear asociaciones (1 asociación por ciudad)
     Asociacion.objects.create(
         nombre="Asociación Comerciantes Orihuela",
         ciudad=ciudad1,
@@ -46,12 +45,10 @@ def create_initial_data(apps, schema_editor):
         telefono="962456123"
     )
 
-    # Crear categorías (3 categorías distintas)
     categoria1 = Categoria.objects.create(codigo="ALI", nombre="Alimentos")
     categoria2 = Categoria.objects.create(codigo="ELE", nombre="Electrónica")
     categoria3 = Categoria.objects.create(codigo="ROP", nombre="Ropa")
 
-    # Crear subcategorías (2 subcategorías por categoría)
     Subcategoria.objects.create(codigo="VER", nombre="Verduras", categoria=categoria1)
     Subcategoria.objects.create(codigo="FRU", nombre="Frutas", categoria=categoria1)
     Subcategoria.objects.create(codigo="MOV", nombre="Móviles", categoria=categoria2)
@@ -59,7 +56,6 @@ def create_initial_data(apps, schema_editor):
     Subcategoria.objects.create(codigo="CAM", nombre="Camisetas", categoria=categoria3)
     Subcategoria.objects.create(codigo="PAN", nombre="Pantalones", categoria=categoria3)
 
-    # Crear comercios (2 comercios por ciudad, con diferentes categorías y subcategorías)
     Comercio.objects.create(nombre="Frutería La Huerta", ciudad=ciudad1, categoria=categoria1, subcategoria=Subcategoria.objects.get(nombre="Verduras"), direccion="Calle Falsa 123", codigo_postal="03300")
     Comercio.objects.create(nombre="Frutería Juan Carlos", ciudad=ciudad1, categoria=categoria1, subcategoria=Subcategoria.objects.get(nombre="Frutas"), direccion="Calle Verdadera 321", codigo_postal="03300")
 
