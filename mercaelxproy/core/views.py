@@ -5,8 +5,6 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 from common.mixins import CreateUpdateMixin, DeleteMixin, OrderedListMixin, LoginRequiredMixin
 from .forms import *
-from django.contrib.auth.decorators import login_required
-from django.utils.decorators import method_decorator
 
 #----UD7.2.g----
 #Llamada a la clase de OrderedListMixin para ordering por query de la list
