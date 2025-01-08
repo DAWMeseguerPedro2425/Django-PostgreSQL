@@ -2,6 +2,7 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 from .models import Provincia, Ciudad
 
+#-----UD6.5-----
 # Diccionario de capitales de provincia
 CAPITALES = {
     "ALB": "Albacete",
@@ -53,9 +54,12 @@ CAPITALES = {
     "ZAM": "Zamora",
     "ZAR": "Zaragoza"
 }
-
+#-----UD6.5-----
+# receiver para crear la capital de la provincia al crear una provincia. Post guardado de la provincia
 @receiver(post_save, sender=Provincia)
 def crear_capital(sender, instance, created, **kwargs):
+    #-----UD6.5-----
+    # Si se ha creado la provincia, se crea la capital de la provincia
     if created:
         capital_nombre = CAPITALES.get(instance.codigo)
         if capital_nombre:
