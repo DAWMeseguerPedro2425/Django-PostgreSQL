@@ -1,8 +1,5 @@
 from django.db import models
 
-# Create your models here.
-from django.core.validators import RegexValidator
-
 #--------UD6.3.a--------
 #Se crea el modelo Asociacion con los campos nombre, dirección, ciudad, correo electrónico y teléfono
 class Asociacion(models.Model):

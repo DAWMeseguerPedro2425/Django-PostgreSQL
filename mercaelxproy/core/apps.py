@@ -7,3 +7,6 @@ class CoreConfig(AppConfig):
     #--------UD6.3.d--------
     #Se cambia el nombre de la aplicación en el panel de administración
     verbose_name = 'Core'
+
+    def ready(self):
+        import core.signals

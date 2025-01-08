@@ -10,3 +10,14 @@ services:
       - "80:8000"
     volumes:
       - ./mercaelxproy/:/code # Mapeo de volumen para sincronizar cambios en el código
+  #----UD9.2.a----
+  # Configuración de la base de datos PostgreSQL
+  db:
+    image: postgres:14
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    environment:
+      - "POSTGRES_HOST_AUTH_METHOD=trust"
+
+volumes:
+  postgres_data:
