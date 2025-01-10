@@ -57,10 +57,10 @@ CAPITALES = {
 #-----UD6.5-----
 # receiver para crear la capital de la provincia al crear una provincia. Post guardado de la provincia
 @receiver(post_save, sender=Provincia)
-def crear_capital(sender, instance, created, **kwargs):
+def save_capital(sender, instance, created, **kwargs):
     #-----UD6.5-----
     # Si se ha creado la provincia, se crea la capital de la provincia
     if created:
-        capital_nombre = CAPITALES.get(instance.codigo)
-        if capital_nombre:
-            Ciudad.objects.create(codigo=instance.codigo, nombre=capital_nombre, provincia=instance)
+        capital = CAPITALES.get(instance.codigo)
+        if capital:
+            Ciudad.objects.create(codigo=instance.codigo, nombre=capital, provincia=instance)

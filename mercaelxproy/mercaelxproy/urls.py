@@ -96,10 +96,10 @@ urlpatterns = [
 
     #----UD8.2.a----
     # URLs de usuarios
-    #path('login/', usuarios_views.CustomLoginView.as_view(), name='login'),
-    #path('logout/', usuarios_views.CustomLogoutView.as_view(), name='logout'),
+    path('login/', usuarios_views.CustomLoginView.as_view(), name='login'),
+    path('logout/', usuarios_views.CustomLogoutView.as_view(), name='logout'),
 
-    path('accounts/', include('allauth.urls')),
+    #path('accounts/', include('allauth.urls')),
 ]
 
 #-----UD6.2.e-----
